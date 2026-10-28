@@ -6,6 +6,7 @@ from collections.abc import Awaitable, Callable
 from typing import TYPE_CHECKING, Annotated, Final, Literal, TypeAlias
 
 from mcp.server.fastmcp import FastMCP
+from mcp.types import ToolAnnotations
 from pydantic import Field
 
 from client.episodes.lists import EpisodeListsClient
@@ -400,6 +401,7 @@ def register_episode_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch detailed information about a specific TV show episode, "
             "including overview, air date, runtime, and ratings."
         ),
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_episode_summary_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -413,6 +415,7 @@ def register_episode_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
         description=(
             "Fetch ratings and voting statistics for a specific TV show episode."
         ),
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_episode_ratings_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -427,6 +430,7 @@ def register_episode_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch engagement statistics for a specific TV show episode "
             "including watchers, plays, collectors, and comments."
         ),
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_episode_stats_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -441,6 +445,7 @@ def register_episode_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch cast and crew for a specific TV show episode, "
             "including character names and episode counts."
         ),
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_episode_people_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -455,6 +460,7 @@ def register_episode_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch videos (trailers, recaps, etc.) for a specific TV show episode. "
             "Set embed_markdown=False for simple links."
         ),
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_episode_videos_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -472,6 +478,7 @@ def register_episode_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
         description=(
             "Fetch users currently watching a specific TV show episode right now."
         ),
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_episode_watching_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -485,6 +492,7 @@ def register_episode_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
         description=(
             "Fetch translations for a specific TV show episode in different languages."
         ),
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_episode_translations_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -497,6 +505,7 @@ def register_episode_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
     @mcp.tool(
         name="fetch_episode_lists",
         description="Fetch lists that contain a specific TV show episode.",
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_episode_lists_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
