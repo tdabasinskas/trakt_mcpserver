@@ -5,6 +5,7 @@ from collections.abc import Awaitable, Callable
 from typing import Annotated, Any, ClassVar, Literal
 
 from mcp.server.fastmcp import FastMCP
+from mcp.types import ToolAnnotations
 from pydantic import BaseModel, Field, field_validator
 
 from client.pool import get_client
@@ -975,6 +976,7 @@ def register_sync_tools(
             "Supports optional pagination with 'page' parameter. "
             "Requires OAuth authentication."
         ),
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_user_ratings_tool(
         rating_type: Annotated[
@@ -999,6 +1001,12 @@ def register_sync_tools(
         description=(
             "Add new ratings for the authenticated user. Requires OAuth authentication."
         ),
+        annotations=ToolAnnotations(
+            readOnlyHint=False,
+            destructiveHint=True,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def add_user_ratings_tool(
         rating_type: Annotated[
@@ -1019,6 +1027,12 @@ def register_sync_tools(
         name="remove_user_ratings",
         description=(
             "Remove ratings for the authenticated user. Requires OAuth authentication."
+        ),
+        annotations=ToolAnnotations(
+            readOnlyHint=False,
+            destructiveHint=True,
+            idempotentHint=True,
+            openWorldHint=True,
         ),
     )
     async def remove_user_ratings_tool(
@@ -1043,6 +1057,7 @@ def register_sync_tools(
             "Supports optional pagination with 'page' parameter and sorting options. "
             "Requires OAuth authentication."
         ),
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_user_watchlist_tool(
         watchlist_type: Annotated[
@@ -1077,6 +1092,12 @@ def register_sync_tools(
             "Supports optional notes (VIP only, 500 character limit). "
             "Requires OAuth authentication."
         ),
+        annotations=ToolAnnotations(
+            readOnlyHint=False,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def add_user_watchlist_tool(
         watchlist_type: Annotated[
@@ -1098,6 +1119,12 @@ def register_sync_tools(
         description=(
             "Remove items from the authenticated user's watchlist. "
             "Requires OAuth authentication."
+        ),
+        annotations=ToolAnnotations(
+            readOnlyHint=False,
+            destructiveHint=True,
+            idempotentHint=True,
+            openWorldHint=True,
         ),
     )
     async def remove_user_watchlist_tool(
@@ -1124,6 +1151,7 @@ def register_sync_tools(
             "Supports optional pagination with 'page' parameter. "
             "Requires OAuth authentication."
         ),
+        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
     )
     async def fetch_history_tool(
         history_type: Annotated[
@@ -1157,6 +1185,12 @@ def register_sync_tools(
             "'watched_at', which also accepts 'released' or 'unknown'. "
             "Requires OAuth authentication."
         ),
+        annotations=ToolAnnotations(
+            readOnlyHint=False,
+            destructiveHint=False,
+            idempotentHint=False,
+            openWorldHint=True,
+        ),
     )
     async def add_to_history_tool(
         history_type: Annotated[
@@ -1176,6 +1210,12 @@ def register_sync_tools(
             "Remove items from watch history. Removes movies, shows, seasons, "
             "or episodes from your watched history. "
             "Requires OAuth authentication."
+        ),
+        annotations=ToolAnnotations(
+            readOnlyHint=False,
+            destructiveHint=True,
+            idempotentHint=True,
+            openWorldHint=True,
         ),
     )
     async def remove_from_history_tool(
