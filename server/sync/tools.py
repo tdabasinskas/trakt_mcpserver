@@ -976,7 +976,12 @@ def register_sync_tools(
             "Supports optional pagination with 'page' parameter. "
             "Requires OAuth authentication."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_user_ratings_tool(
         rating_type: Annotated[
@@ -1057,7 +1062,12 @@ def register_sync_tools(
             "Supports optional pagination with 'page' parameter and sorting options. "
             "Requires OAuth authentication."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_user_watchlist_tool(
         watchlist_type: Annotated[
@@ -1151,7 +1161,12 @@ def register_sync_tools(
             "Supports optional pagination with 'page' parameter. "
             "Requires OAuth authentication."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_history_tool(
         history_type: Annotated[

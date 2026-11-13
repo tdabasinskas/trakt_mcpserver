@@ -170,7 +170,12 @@ def register_progress_tools(
             "For listing all watched shows, use fetch_user_watched_shows instead. "
             "Requires OAuth authentication."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_show_progress_tool(
         show_id: Annotated[str, Field(description=SHOW_ID_DESCRIPTION)],
@@ -202,7 +207,12 @@ def register_progress_tools(
             "that were paused during playback with their progress percentage. "
             "Requires OAuth authentication."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_playback_progress_tool(
         playback_type: Annotated[

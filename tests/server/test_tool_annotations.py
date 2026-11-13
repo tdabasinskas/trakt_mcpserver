@@ -51,3 +51,22 @@ async def test_fetch_and_search_tools_are_read_only() -> None:
         assert tool.annotations is not None
         expected = tool.name.startswith(("fetch_", "search_"))
         assert tool.annotations.readOnlyHint is expected, tool.name
+
+
+@pytest.mark.asyncio
+async def test_every_tool_declares_all_four_hints() -> None:
+    """Missing hints fall back to spec defaults, so every tool states all four."""
+    tools = await create_server().list_tools()
+
+    for tool in tools:
+        assert tool.annotations is not None
+        hints = tool.annotations
+        assert None not in (
+            hints.readOnlyHint,
+            hints.destructiveHint,
+            hints.idempotentHint,
+            hints.openWorldHint,
+        ), tool.name
+        if hints.readOnlyHint:
+            assert hints.destructiveHint is False, tool.name
+            assert hints.idempotentHint is True, tool.name

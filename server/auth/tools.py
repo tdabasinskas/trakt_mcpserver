@@ -269,6 +269,7 @@ def register_auth_tools(mcp: FastMCP) -> tuple[Any, Any, Any]:
         annotations=ToolAnnotations(
             readOnlyHint=False,
             destructiveHint=False,
+            idempotentHint=True,
             openWorldHint=True,
         ),
     )
