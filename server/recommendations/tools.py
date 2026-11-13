@@ -258,7 +258,12 @@ def register_recommendation_tools(
             "viewing history. Requires OAuth authentication. Use limit parameter "
             "(max 100) to control number of results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_movie_recommendations_tool(
         limit: Annotated[
@@ -285,7 +290,12 @@ def register_recommendation_tools(
             "viewing history. Requires OAuth authentication. Use limit parameter "
             "(max 100) to control number of results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_show_recommendations_tool(
         limit: Annotated[

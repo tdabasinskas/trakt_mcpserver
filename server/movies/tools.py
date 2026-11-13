@@ -562,7 +562,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch trending movies from Trakt. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_trending_movies_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -576,7 +581,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch popular movies from Trakt. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_popular_movies_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -590,7 +600,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch most favorited movies from Trakt. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_favorited_movies_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -608,7 +623,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch most played movies from Trakt. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_played_movies_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -626,7 +646,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch most watched movies from Trakt. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_watched_movies_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -644,7 +669,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch most anticipated movies from Trakt, sorted by list count. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_anticipated_movies_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -658,7 +688,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch the top 10 grossing movies in the U.S. box office last weekend. "
             "Updated every Monday morning."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_boxoffice_movies_tool() -> str:
         return await fetch_boxoffice_movies()
@@ -666,7 +701,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
     @mcp.tool(
         name="fetch_movie_ratings",
         description="Fetch ratings and voting statistics for a specific movie",
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_movie_ratings_tool(
         movie_id: Annotated[str, Field(min_length=1, description=MOVIE_ID_DESCRIPTION)],
@@ -683,7 +723,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "production status, ratings, genres, runtime, certification, and metadata. "
             "Basic mode (extended=false): Returns only title, year, and Trakt ID."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_movie_summary_tool(
         movie_id: Annotated[str, Field(min_length=1, description=MOVIE_ID_DESCRIPTION)],
@@ -700,7 +745,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Set embed_markdown=False to return simple links instead of "
             "YouTube iframes."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_movie_videos_tool(
         movie_id: Annotated[str, Field(min_length=1, description=MOVIE_ID_DESCRIPTION)],
@@ -721,7 +771,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "based on genres, themes, and viewer patterns. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_related_movies_tool(
         movie_id: Annotated[str, Field(min_length=1, description=MOVIE_ID_DESCRIPTION)],
@@ -737,7 +792,12 @@ def register_movie_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Returns cast with character names and crew "
             "grouped by department."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_movie_people_tool(
         movie_id: Annotated[

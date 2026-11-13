@@ -409,7 +409,12 @@ def register_season_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch detailed information about a specific TV show season, "
             "including episode count, ratings, and air dates."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_season_info_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -423,7 +428,12 @@ def register_season_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch all episodes for a specific TV show season "
             "with titles, ratings, and runtime."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_season_episodes_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -436,7 +446,12 @@ def register_season_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
         description=(
             "Fetch ratings and voting statistics for a specific TV show season."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_season_ratings_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -450,7 +465,12 @@ def register_season_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch engagement statistics for a specific TV show season "
             "including watchers, plays, collectors, and comments."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_season_stats_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -464,7 +484,12 @@ def register_season_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch cast and crew for a specific TV show season, "
             "including character names and episode counts."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_season_people_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -478,7 +503,12 @@ def register_season_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch videos (trailers, recaps, etc.) for a specific TV show season. "
             "Set embed_markdown=False for simple links."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_season_videos_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -495,7 +525,12 @@ def register_season_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
         description=(
             "Fetch users currently watching a specific TV show season right now."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_season_watching_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -508,7 +543,12 @@ def register_season_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
         description=(
             "Fetch translations for a specific TV show season in different languages."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_season_translations_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -520,7 +560,12 @@ def register_season_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
     @mcp.tool(
         name="fetch_season_lists",
         description="Fetch lists that contain a specific TV show season.",
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_season_lists_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],

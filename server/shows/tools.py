@@ -574,7 +574,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch trending TV shows from Trakt. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_trending_shows_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -588,7 +593,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch popular TV shows from Trakt. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_popular_shows_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -602,7 +612,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch most favorited TV shows from Trakt. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_favorited_shows_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -620,7 +635,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch most played TV shows from Trakt. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_played_shows_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -638,7 +658,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch most watched TV shows from Trakt. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_watched_shows_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -656,7 +681,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch most anticipated TV shows from Trakt, sorted by list count. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_anticipated_shows_tool(
         limit: Annotated[int, Field(description=LIMIT_DESCRIPTION)] = DEFAULT_LIMIT,
@@ -667,7 +697,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
     @mcp.tool(
         name="fetch_show_ratings",
         description="Fetch ratings and voting statistics for a specific TV show",
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_show_ratings_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -685,7 +720,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "metadata. Basic mode (extended=false): Returns only title, year, and "
             "Trakt ID."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_show_summary_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -702,7 +742,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Set embed_markdown=False to return simple links instead of "
             "YouTube iframes."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_show_videos_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -723,7 +768,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "based on genres, themes, and viewer patterns. "
             "Use page parameter for paginated results, or omit for all results."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_related_shows_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -738,7 +788,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Fetch all seasons for a TV show from Trakt, including episode counts, "
             "aired episodes, and ratings per season."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_show_seasons_tool(
         show_id: Annotated[str, Field(min_length=1, description=SHOW_ID_DESCRIPTION)],
@@ -752,7 +807,12 @@ def register_show_tools(mcp: FastMCP) -> tuple[ToolHandler, ...]:
             "Set include_guest_stars=true to also return guest stars "
             "(warning: returns a lot of data)."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_show_people_tool(
         show_id: Annotated[

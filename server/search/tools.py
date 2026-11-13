@@ -194,7 +194,12 @@ def register_search_tools(
     @mcp.tool(
         name="search_shows",
         description="Search for TV shows on Trakt by title",
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def search_shows_tool(
         query: Annotated[
@@ -211,7 +216,12 @@ def register_search_tools(
     @mcp.tool(
         name="search_movies",
         description="Search for movies on Trakt by title",
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def search_movies_tool(
         query: Annotated[

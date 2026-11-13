@@ -213,7 +213,12 @@ def register_people_tools(
             "birthday, biography, social media. "
             "Basic (extended=false): name and IDs only."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_person_summary_tool(
         person_id: Annotated[
@@ -231,7 +236,12 @@ def register_people_tools(
             "Returns cast roles and crew positions grouped by "
             "department."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_person_movies_tool(
         person_id: Annotated[
@@ -248,7 +258,12 @@ def register_people_tools(
             "Returns cast roles with episode counts and crew "
             "positions grouped by department."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_person_shows_tool(
         person_id: Annotated[
@@ -265,7 +280,12 @@ def register_people_tools(
             "Returns personal or official lists sorted by "
             "popularity, likes, or other criteria."
         ),
-        annotations=ToolAnnotations(readOnlyHint=True, openWorldHint=True),
+        annotations=ToolAnnotations(
+            readOnlyHint=True,
+            destructiveHint=False,
+            idempotentHint=True,
+            openWorldHint=True,
+        ),
     )
     async def fetch_person_lists_tool(
         person_id: Annotated[
